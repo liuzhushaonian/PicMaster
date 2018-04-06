@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/album_toolbar"
         app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-        android:background="@color/colorPink"
+        android:background="@color/colorTeal"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >

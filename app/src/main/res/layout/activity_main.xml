@@ -54,7 +54,7 @@
         android:id="@+id/sel_image_and_handler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPink"
+        android:background="@color/colorTeal"
         android:text="@string/string_add"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_gravity="bottom"
