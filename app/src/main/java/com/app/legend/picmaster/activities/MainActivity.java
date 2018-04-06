@@ -6,6 +6,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,12 +16,14 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -50,19 +53,17 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
 
     private Toolbar toolbar;
     private Button add;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
     private MainPresenter presenter;
     private EditText width, height, bai, rotation, water;
     private SeekBar qualitySeekbar, transSeekbar,textSizeSeekBar;
     private CheckBox rotationBox, retroBox, addWater;
-    private RadioButton waterImage, waterText;
     private Button selImagePath;
     private Spinner scaleType, formatType, retroType, waterPosition;
     private LinearLayout scaleLayout, water_linearLayout,textSizeGroup;
     private TextView quality_text, trans_text,textSizeView;
     private RadioGroup radioGroup;
     private boolean isText = false;
+    private TextView about;
 
 
 
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getPermission();
+//        getPermission();
 
         getComponent();
         initToolbar();
@@ -94,6 +95,8 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
 
         click();
 
+        initAbout();
+
         ImageHandler.getHandler().setListener(this);
 
     }
@@ -110,8 +113,17 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         if (ContextCompat.checkSelfPermission(MainActivity.this, permissionStrings[0]) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{permissionStrings[0]}, 1000);
 
+        }else {
+
+            openAlbums();
         }
 
+    }
+
+    private void openAlbums(){
+
+        Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
+        startActivityForResult(intent, 3000);
     }
 
     private void getComponent() {
@@ -131,8 +143,6 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         rotationBox = findViewById(R.id.rotation_checkBox);
         retroBox = findViewById(R.id.retro_checkBox);
         addWater = findViewById(R.id.add_water_checkBox);
-        waterImage = findViewById(R.id.image_water);
-        waterText = findViewById(R.id.text_water);
         selImagePath = findViewById(R.id.sel_water_button);
         scaleType = findViewById(R.id.scale_type_spinner);
         formatType = findViewById(R.id.format_spinner);
@@ -145,6 +155,7 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         textSizeSeekBar=findViewById(R.id.textSizeSeekBar);
 
         trans_text = findViewById(R.id.trans_textView);
+        about=findViewById(R.id.about_text);
 
     }
 
@@ -181,9 +192,14 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
 
         add.setOnClickListener(v -> {
 
-            Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
-            startActivityForResult(intent, 3000);
 
+            getPermission();
+
+        });
+
+        about.setOnClickListener(v -> {
+
+            initPopup();
         });
 
 
@@ -195,9 +211,14 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         switch (requestCode) {
             case 1000:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    openAlbums();
+
                 } else {
                     Toast.makeText(MainActivity.this, "无法获取权限，请赋予相关权限", Toast.LENGTH_SHORT).show();
                 }
+
+
                 break;
         }
 
@@ -698,5 +719,38 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         add.setClickable(true);
         add.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPink));
         add.setText(getResources().getText(R.string.string_add));
+    }
+
+    private void initAbout(){
+
+        SharedPreferences sharedPreferences=getSharedPreferences(ABOUT,MODE_PRIVATE);
+
+        int tag=sharedPreferences.getInt("tag",-1);
+
+        if (tag<0){//第一次打开
+            initPopup();
+
+            tag=1;
+
+            sharedPreferences.edit().putInt("tag",tag).apply();
+        }
+
+    }
+
+    private void initPopup(){
+
+        final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        LayoutInflater inflater=LayoutInflater.from(this);
+
+        View view=inflater.inflate(R.layout.main_item,null,false);
+
+        TextView textView=view.findViewById(R.id.about);
+
+        textView.setText(getResources().getText(R.string.string_about));
+
+        builder.setView(view).setTitle("给用户的说明书");
+        builder.show();
+
     }
 }

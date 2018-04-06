@@ -17,6 +17,20 @@
         android:background="@color/colorTeal"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="说明书"
+                android:paddingEnd="16dp"
+                android:id="@+id/about_text"
+                />
+
+
+        </FrameLayout>
 
 
     </android.support.v7.widget.Toolbar>

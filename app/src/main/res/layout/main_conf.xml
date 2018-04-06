@@ -181,6 +181,7 @@
         android:layout_marginTop="16dp"
         android:padding="8dp"
         android:text="@string/string_image_quality"
+        android:textColor="@color/colorPink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
