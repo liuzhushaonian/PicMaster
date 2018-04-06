@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="scale_type">
+        <item >保留原大小</item>
+        <item >百分比模式</item>
+        <item >自定义大小</item>
+    </string-array>
+    
+    <string-array name="format_type">
+        <item>保留原格式</item>
+        <item>jpg</item>
+        <item>png</item>
+        <item>webp</item>
+
+    </string-array>
+
+    <string-array name="retro_type">
+
+        <item>上下翻转</item>
+        <item>左右翻转</item>
+    </string-array>
+
+    <string-array name="water_position">
+        <item>中间</item>
+        <item>上边</item>
+        <item>下边</item>
+        <item>左边</item>
+        <item>右边</item>
+        <item>左上角</item>
+        <item>右上角</item>
+        <item>左下角</item>
+        <item>右下角</item>
+
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">PicMaster</string>
+    <string name="string_scale_type">缩放方式</string>
+    <string name="string_diy_width">自定义宽</string>
+    <string name="string_diy_height">自定义高</string>
+    <string name="string_keep">保留原格式</string>
+    <string name="string_diy_bai">百分比方式</string>
+    <string name="string_rotation">旋转图片</string>
+    <string name="string_du">°</string>
+    <string name="string_retro">翻转图片</string>
+    <string name="string_add_water">添加水印</string>
+    <string name="string_retro_type_one">上下翻转</string>
+    <string name="string_retro_type_two">左右翻转</string>
+    <string name="string_sel_path">选择图片</string>
+    <string name="string_text_water">文字水印</string>
+    <string name="string_text_advice">建议不超过10个字</string>
+    <string name="string_water_trans">水印不透明度 100%</string>
+    <string name="string_water_position">水印位置</string>
+    <string name="string_image_quality">图片质量 100%</string>
+    <string name="string_change_format">转换格式</string>
+    <string name="string_no_change">不改变</string>
+    <string name="string_jpg">jpg</string>
+    <string name="string_png">png</string>
+    <string name="string_bmp">bmp</string>
+    <string name="string_output_path">输出路径\n
+        sdcard/PicMaster/
+    </string>
+    <string name="string_override">是否覆盖</string>
+    <string name="string_user_manual">在本界面配置好需要的格式后，点击添加图片即可自动转为设置好的图片，输出路径在sdcard/PicMaster/下</string>
+    <string name="string_path">sdcard/PicMaster/</string>
+
+    <string name="string_add">选择图片&amp;开始处理</string>
+
+    <string name="string_image_water">图片水印</string>
+
+    <string name="string_handle">正在处理中。。。</string>
+
+    <string name="string_success">处理成功</string>
+</resources>
