@@ -262,14 +262,15 @@ public class ImageHandler {
             } else if (builder.waterText != null) {//文字水印,需要缓存
 
 
+                String cache_name=builder.waterText+builder.textSize+builder.color+"";
 
-                Bitmap water = getBitmapFromMemory(builder.waterText);
+                Bitmap water = getBitmapFromMemory(cache_name);
                 if (water == null) {//从缓存处获取不到图片
 
                     water = makeTextWater(builder.waterText, builder.textSize, builder.color);
 
                     if (water != null) {//缓存
-                        cacheInMemory(water, builder.waterText);
+                        cacheInMemory(water, cache_name);
                     }
 
                 }

@@ -17,7 +17,7 @@
     <dimen name="album_other">4dp</dimen>
     <dimen name="album_info_d">200dp</dimen>
     <dimen name="album_info_w">100dp</dimen>
-    <dimen name="text_size">14sp</dimen>
+    <dimen name="text_size">18sp</dimen>
     <dimen name="controller_padding">5dp</dimen>
 
     <dimen name="play_button">72dp</dimen>
