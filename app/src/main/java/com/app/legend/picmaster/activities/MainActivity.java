@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
     private RadioGroup radioGroup;
     private boolean isText = false;
     private TextView about;
+    private RadioButton colorButton;
 
 
 
@@ -129,6 +130,7 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
     private void getComponent() {
 
 //        sel_image.findViewById(R.id.sel_image_and_handler);
+        colorButton=findViewById(R.id.text_water);
         textSizeGroup=findViewById(R.id.textSizeGroup);
         textSizeView=findViewById(R.id.textSizeView);
         add = findViewById(R.id.sel_image_and_handler);
@@ -182,6 +184,8 @@ public class MainActivity extends BaseActivity implements IMainActivity,Complete
         public void onColorConfirm(ColorPickerDialog dialog, int color) {//确定的颜色
 
             presenter.setColor(color);
+
+            colorButton.setTextColor(color);
 
             Log.d("color---->>", color + "");
 

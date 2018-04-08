@@ -403,7 +403,7 @@ public class ImageHandler {
 
         }
 
-        Log.d("size------>>>>>>>",size+"");
+//        Log.d("size------>>>>>>>",size+"");
 
         return size;
     }
@@ -413,16 +413,18 @@ public class ImageHandler {
             return null;
         }
 
-        Log.d("scale--->>",scale+"");
+//        Log.d("scale--->>",scale+"");
 
         float yw = bitmap.getWidth();
         float yh = bitmap.getHeight();
 
-        Matrix matrix = new Matrix();
+//        Matrix matrix = new Matrix();
 
-        matrix.postScale(scale, scale, yw / 2, yh / 2);
+//        matrix.postScale(scale, scale, yw / 2, yh / 2);
+//
+//        bitmap = Bitmap.createBitmap(bitmap, 0, 0, (int) (yw * scale), (int) (yh * scale), matrix, true);
 
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, (int) (yw * scale), (int) (yh * scale), matrix, true);
+        bitmap=Bitmap.createScaledBitmap(bitmap,(int) (yw * scale), (int) (yh * scale),false);
 
         return bitmap;
     }
