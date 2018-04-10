@@ -584,16 +584,16 @@ public class ImageHandler {
         if (bitmap == null) {
             return;
         }
-        if (quality<=40){
-
-            bitmap=bitmap.copy(Bitmap.Config.ALPHA_8,true);
-
-        }else if (quality<=60){
-
-            bitmap=bitmap.copy(Bitmap.Config.RGB_565,true);
-        }else {
+//        if (quality<=40){
+//
+//            bitmap=bitmap.copy(Bitmap.Config.ALPHA_8,true);
+//
+//        }else if (quality<=60){
+//
+//            bitmap=bitmap.copy(Bitmap.Config.RGB_565,true);
+//        }else {
             bitmap=bitmap.copy(Bitmap.Config.ARGB_4444,true);
-        }
+//        }
 
 
         String other=name.substring(name.lastIndexOf(".")+1,name.length());
